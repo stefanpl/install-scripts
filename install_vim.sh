@@ -3,7 +3,7 @@
 vim --version 2>/dev/null > /dev/null
 if [ $? -eq 0 ]
 then
-	"Vim is installed. Setup configuration"
+	echo "Vim is installed. Setup configuration"
 else
 	sudo apt-get install -y vim
 fi

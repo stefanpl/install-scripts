@@ -1,7 +1,7 @@
 #!bin/bash
 if [ -d ~/.oh-my-zsh ] && [ -h ~/.zshrc ]
 then
-	echo "oh-my-zsh sees to be ready"
+	echo "oh-my-zsh seems to be ready"
 else
 	# setup oh-my-zsh
 	git clone https://github.com/stefanpl/oh-my-zsh $HOME/.oh-my-zsh ;
