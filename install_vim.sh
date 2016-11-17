@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 # install vim
 vim --version 2>/dev/null > /dev/null
 if [ $? -eq 0 ]

@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 sudo apt-get install -y python python-gtk2 python-xlib python-dbus python-wnck
 git clone https://github.com/ssokolow/quicktile.git /tmp/tmp_quicktile
 mkdir -p $HOME/scripts

@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 if [ -d ~/.oh-my-zsh ] && [ -h ~/.zshrc ]
 then
 	echo "oh-my-zsh seems to be ready"
