@@ -21,8 +21,8 @@ echo "Exec=/opt/quicktile.py --daemonize" >> autostart_file
 if [ ! -d "$HOME"/dotfiles ]; then
 	git clone https://github.com/stefanpl/dotfiles $HOME
 fi
-if [ -f "$HOME"/dotfiles/quicktile.cfg ]; then
-	ln -s "$HOME"/dotfiles/quicktile.cfg "$HOME"/.config/
+if [ -f "$HOME"/dotfiles/quicktile/quicktile.cfg ]; then
+	ln -s "$HOME"/dotfiles/quicktile/quicktile.cfg "$HOME"/.config/
 else
 	echo ERROR: found "$HOME"/dotfiles but no quicktile.cfg in it
 	exit 2
