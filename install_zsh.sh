@@ -8,6 +8,7 @@ else
 	# setup oh-my-zsh
 	git clone https://github.com/stefanpl/oh-my-zsh $HOME/.oh-my-zsh ;
 	ln -s $HOME/.oh-my-zsh/.zshrc $HOME
+	touch $HOME/.oh-my-zsh/secrets
 fi
 
 # Check if zsh needs to be installed
@@ -29,4 +30,3 @@ else
 	echo "something seems odd – zsh should be installed but is not available at /bin/zsh"
 	exit 1
 fi
-
