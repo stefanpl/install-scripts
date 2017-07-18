@@ -1,11 +1,13 @@
 #!/bin/bash
+source $( dirname $0  )/require_root.sh
+
 # install vim
 vim --version 2>/dev/null > /dev/null
 if [ $? -eq 0 ]
 then
 	echo "Vim is installed. Setup configuration"
 else
-	sudo apt-get install -y vim
+	apt-get install -y vim
 fi
 
 # set up vim configuration 

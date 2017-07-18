@@ -1,12 +1,13 @@
 #!/bin/bash
+source $( dirname $0  )/require_root.sh
 
 # get dependencies
-sudo apt-get install -y python python-gtk2 python-xlib python-dbus python-wnck
+apt-get install -y python python-gtk2 python-xlib python-dbus python-wnck
 
 # get the script
-sudo curl -o /opt/quicktile.py https://raw.githubusercontent.com/ssokolow/quicktile/master/quicktile.py
-sudo chmod +x /opt/quicktile.py 
-sudo chown "$USER":"$USER" /opt/quicktile.py 
+curl -o /opt/quicktile.py https://raw.githubusercontent.com/ssokolow/quicktile/master/quicktile.py
+chmod +x /opt/quicktile.py 
+chown "$USER":"$USER" /opt/quicktile.py 
 
 # make it autostart
 autostart_dir="$HOME"/.config/autostart/

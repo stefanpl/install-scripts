@@ -1,8 +1,10 @@
 #!/bin/bash
+source $( dirname $0  )/require_root.sh
+
 # check if it exists in package files - otherwise, use PPA
-if [[ ! $(sudo apt-cache search synapse | grep "^synapse ") ]]; then
+if [[ ! $(apt-cache search synapse | grep "^synapse ") ]]; then
 	echo "Synapse not found in repository. Adding PPA."
-	sudo apt-add-repository ppa:synapse-core/ppa
-	sudo apt-get update
+	apt-add-repository ppa:synapse-core/ppa
+	apt-get update
 fi
-sudo apt-get install -y synapse
+apt-get install -y synapse
