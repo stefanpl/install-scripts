@@ -1,5 +1,6 @@
 #!/bin/bash
-source $( dirname $0  )/require_root.sh
+source $( dirname $0  )/utils.sh
+requireRoot
 
 # check if it exists in package files - otherwise, use PPA
 if [[ ! $(apt-cache search synapse | grep "^synapse ") ]]; then

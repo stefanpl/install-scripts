@@ -1,5 +1,6 @@
 #!/bin/bash
-source $( dirname $0  )/require_root.sh
+source $( dirname $0  )/utils.sh
+requireRoot
 
 # install vim
 vim --version 2>/dev/null > /dev/null

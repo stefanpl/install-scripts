@@ -1,5 +1,6 @@
 #!/bin/bash
-source $( dirname $0  )/require_root.sh
+source $( dirname $0  )/utils.sh
+requireRoot
 
 # get dependencies
 apt-get install -y python python-gtk2 python-xlib python-dbus python-wnck

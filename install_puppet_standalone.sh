@@ -1,5 +1,6 @@
 #!/bin/bash
-source $( dirname $0 )/require_root.sh
+source $( dirname $0 )/utils.sh
+requireRoot
 
 # Check if release string contains 16.04. Abort if not.
 cat /etc/*release 2>/dev/null | grep "16.04" || \
@@ -23,6 +24,16 @@ apt-get install -y puppet-agent
 # make sure the PATH is included
 export PATH=/opt/puppetlabs/bin:$PATH
 # r10k for advanced puppet deployment
-gem --version > /dev/null || (echo 'rubygems not available. Exiting. && exit 1')
+if [ ! $(gem --version > /dev/null) ]; then
+	apt-get install -y ruby
+fi
+gem --version > /dev/null || (echo 'rubygems not available. Exiting.' && exit 1)
 gem install r10k
-cp ./resources/puppet.conf /etc/puppet/puppet.conf
+puppetpath=/etc/puppetlabs/puppet
+cp ./resources/puppet.conf $puppetpath/puppet.conf
+
+# get the puppetfile
+cd $puppetpath
+cp /vagrant/puppet-setup/* .
+r10k puppetfile install
+puppet apply --modulepath=$puppetpath/modules site.pp

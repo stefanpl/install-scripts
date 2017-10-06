@@ -1,5 +1,6 @@
 #!/bin/bash
-source $( dirname $0  )/require_root.sh
+source $( dirname $0  )/utils.sh
+requireRoot
 
 if [[ $(uname -a | grep "x86_64") ]]; then
 	pushd /tmp/
