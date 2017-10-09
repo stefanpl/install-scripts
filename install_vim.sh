@@ -14,10 +14,11 @@ fi
 # set up vim configuration 
 if [ -d ~/.vim ] && [ -L ~/.vimrc ]
 then
-	echo "Vim seems to be set up already. Have a go!"
+	logSuccess "Vim seems to be set up already. Have a go!"
 else
 	git clone https://github.com/stefanpl/vim-config $HOME/.vim
 	ln -s $HOME/.vim/.vimrc $HOME
 	cd $HOME/.vim
 	git submodule update --init --recursive
+    logSuccess "Vim is ready to rumble!"
 fi

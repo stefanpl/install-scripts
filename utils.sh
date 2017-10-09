@@ -10,7 +10,7 @@ GREEN='\033[1;32m'
 
 # Redirect the received string to stderr and exit 1
 function exitWithError {
-	printf "${RED}### ERROR: ### $1\n" 1>&2;
+	printf "${RED}### ERROR: ### $1\n${NORMAL}" 1>&2;
 	exit 1;
 }
 
@@ -22,6 +22,7 @@ function requireRoot {
 	fi
 	if [ ! "$SUDO_USER" = '' ]; then
 		USER=$SUDO_USER
+        HOME=$(getHomeDirectoryForUser $USER)
 	fi
 }
 
@@ -48,5 +49,5 @@ function getHomeDirectoryForUser {
 }
 
 function logSuccess {
-	printf "${GREEN}$1\n"
+	printf "${GREEN}$1\n${NORMAL}"
 }
