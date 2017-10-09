@@ -4,4 +4,4 @@ requireRoot
 
 locale-gen "en_US.UTF-8"
 locale-gen "de_DE.UTF-8"
-dpkg-reconfigure -f noninteractive locales
+locale-gen --purge de_DE.UTF-8 en_US.UTF-8
