@@ -16,3 +16,6 @@ function installNvm {
 installNvm
 nvm install --lts=boron
 chown -R $USER:$USER $HOME/.nvm
+
+# Install pm2, the node process manager
+npm install -g pm2
