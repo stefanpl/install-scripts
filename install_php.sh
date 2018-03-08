@@ -8,6 +8,7 @@ apt-get install -y php7.0-mysql
 apt-get install -y php7.0-zip
 apt-get install -y php7.0-xml
 apt-get install -y php7.0-json
+apt-get install -y php7.0-gd
 
 
 phpenmod pdo_mysql

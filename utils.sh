@@ -2,10 +2,13 @@
 
 # Collection of utility functions
 
-# ANSI COLOR CODES
-RED='\033[0;31m'
+# ANSI COLOR CODES. Use bold ones for better readability
+# There's more:
+# https://gist.github.com/vratiu/9780109
+RED='\033[1;31m'
 NORMAL='\033[0m'
 GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
 
 
 # Redirect the received string to stderr and exit 1
@@ -50,4 +53,12 @@ function getHomeDirectoryForUser {
 
 function logSuccess {
 	printf "${GREEN}$1\n${NORMAL}"
+}
+
+function logError {
+    printf "${RED}### ERROR: ### $1\n${NORMAL}"
+}
+
+function logInfo {
+    printf "${YELLOW}$1\n${NORMAL}"
 }
