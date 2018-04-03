@@ -2,6 +2,16 @@
 source $( dirname $0 )/utils.sh
 requireRoot
 
+# Determine which user nvm will be installed for 
+if [ $1 ]; then
+    ensureUserExists $1
+    USER=$1
+else
+    echo "No username provided (first argument to this script). Installing for current user".
+fi
+echo "Installing for user "$USER.
+HOME=$(getHomeDirectoryForUser $USER)
+
 # This script will install the latest node version via nvm
 # https://github.com/creationix/nvm
 
@@ -14,8 +24,9 @@ function installNvm {
 }
 
 installNvm
-nvm install --lts=boron
+nvm install --lts=carbon
 chown -R $USER:$USER $HOME/.nvm
 
 # Install pm2, the node process manager
 npm install -g pm2
+
