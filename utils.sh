@@ -51,6 +51,14 @@ function getHomeDirectoryForUser {
 	echo $( getent passwd "$user" | cut -d: -f6  )
 }
 
+# Our dotfiles need to be at ~/.dotfiles
+function ensureDotfilesExist {
+	dotfileDirectory=${HOME}/.dotfiles
+	if [ ! -d ${dotfileDirectory} ]; then
+		git clone https://github.com/stefanpl/dotfiles ${dotfileDirectory}
+	fi
+}
+
 function logSuccess {
 	printf "${GREEN}$1\n${NORMAL}"
 }
