@@ -26,4 +26,17 @@ else
 	exitWithError "Could not locate quicktile config file at ${quicktileConfigFile}."
 fi
 
+autostartDirectory=${HOME}/.config/autostart
+autostartFile=${autostartDirectory}/quicktile.desktop
+mkdir -p ${autostartDirectory}
+chown ${USER}:${USER} ${autostartDirectory}
+
+if [ ! -f ${autostartFile} ]; then
+	echo "[Desktop Entry]" >> ${autostartFile}
+	echo "Type=Application" >> ${autostartFile}
+	echo "Name=Quicktile" >> ${autostartFile}
+	echo "Exec=quicktile --daemonize" >> ${autostartFile}
+	chown ${USER}:${USER} ${autostartFile}
+fi
+
 logSuccess "Quicktile set up successfully."
