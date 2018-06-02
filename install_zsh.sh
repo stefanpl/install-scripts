@@ -19,7 +19,8 @@ else
 	# setup oh-my-zsh
 	git clone https://github.com/stefanpl/oh-my-zsh $HOME/.oh-my-zsh ;
 	ln -s $HOME/.oh-my-zsh/.zshrc $HOME
-    chown -R $USER:$USER $HOME/.oh-my-zsh $HOME/.zshrc
+	ln -s $HOME/.oh-my-zsh/.zshenv $HOME
+    	chown -R $USER:$USER $HOME/.oh-my-zsh $HOME/.zshrc $HOME/.zshenv
 fi
 
 # Check if zsh needs to be installed
