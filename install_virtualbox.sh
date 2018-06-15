@@ -2,4 +2,4 @@
 source $( dirname $0  )/utils.sh
 requireRoot
 
-apt-get install virtualbox virtualbox-qt virtualbox-dkms virtualbox-guest-dkms
+apt-get install -y virtualbox virtualbox-qt virtualbox-guest-utils virtualbox-dkms virtualbox-guest-dkms nfs-kernel-server
