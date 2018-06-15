@@ -26,7 +26,9 @@ function installNvm {
 installNvm
 nvm install --lts=carbon
 chown -R $USER:$USER $HOME/.nvm
+chown -R $USER:$USER $HOME/.config/configstore
 
 # Install pm2, the node process manager
 npm install -g pm2
-
+# Update to latest npm
+npm install -g npm
