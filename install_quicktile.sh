@@ -39,4 +39,7 @@ if [ ! -f ${autostartFile} ]; then
 	chown ${USER}:${USER} ${autostartFile}
 fi
 
+# Launch it
+quicktile --daemonize
+
 logSuccess "Quicktile set up successfully."
