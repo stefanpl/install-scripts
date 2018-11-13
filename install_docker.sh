@@ -42,7 +42,7 @@ fi
 logInfo "Running apt-get update …"
 sudo apt-get update > /dev/null
 logInfo "Installing docker-ce …"
-sudo apt-get install -y docker-ce
+sudo apt-get install -y docker-ce > /dev/null
 
 logInfo "Adding user ${USER} to the docker group …"
 sudo usermod -a -G docker ${USER}
