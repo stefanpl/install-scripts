@@ -1,16 +1,20 @@
 #!/bin/bash
+set -e
+
 source $( dirname $0  )/utils.sh
 # Requires the user to enter the sudo password
 sudo echo "something" > /dev/null || exitWithError "Sudo password required to run this script"
 
-# Install dependencies
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+logInfo "Installing dependencies …"
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common > /dev/null
 
-# Import the key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+logInfo "Importing repository key …"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - > /dev/null
 sudo apt-key fingerprint 0EBFCD88 | grep -e . > /dev/null || exitWithError "Importing key failed. Please investigate."
 
-# Find out the repository name for our distro
+
+logInfo "Trying to determine OS version …"
 ubuntuName=`cat /etc/*release 2>/dev/null | grep -i -e "ubuntu_codename" | perl -p -e "s/.*=//"`
 if [ -z ${ubuntuName} ]; then
   exitWithError 'Could not determine ubuntu name. Is this a ubuntu installation? Please investigate.'
@@ -18,22 +22,29 @@ fi
 repositoryLine="deb [arch=amd64] https://download.docker.com/linux/ubuntu ${ubuntuName} stable"
 repositoryFile=/etc/apt/sources.list.d/additional-repositories.list
 
-# add the repository if it's not already there
+function addRepository {
+  fullCommand="sudo add-apt-repository \"${repositoryLine}\""
+  eval ${fullCommand}
+}
+
+
+logInfo "Adding the docker repository …"
 if [ -f ${repositoryFile} ]; then
   # The square brackets need to be escaped for grep
   searchExpression=`echo "${repositoryLine}" | perl -p -e 's/([\[\]])/\\\\$1/g'`
-  if [ ! "`grep \"${searchExpression}\" ${repositoryFile}`" = "" ]; then
-    logInfo "Repository has already been added to ${repositoryFile}"
-  else
-    sudo add-apt-repository ${repositoryLine}
+  if [ "`grep \"${searchExpression}\" ${repositoryFile}`" = "" ]; then
+    addRepository
   fi
 else
-  sudo add-apt-repository ${repositoryLine}
+  addRepository
 fi
 
-sudo apt-get update
+logInfo "Running apt-get update …"
+sudo apt-get update > /dev/null
+logInfo "Installing docker-ce …"
 sudo apt-get install -y docker-ce
 
+logInfo "Adding user ${USER} to the docker group …"
 sudo usermod -a -G docker ${USER}
 
-docker -v && logSuccess "Docker installed. Added user ${USER} to docker group."
+docker -v && logSuccess "Docker installed successfully. Now create something beautiful."
