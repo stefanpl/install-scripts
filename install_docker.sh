@@ -47,4 +47,4 @@ sudo apt-get install -y docker-ce > /dev/null
 logInfo "Adding user ${USER} to the docker group …"
 sudo usermod -a -G docker ${USER}
 
-docker -v && logSuccess "Docker installed successfully. Now create something beautiful."
+docker -v && logSuccess "Docker installed successfully. IMPORTANT: log out and back in to apply user permissions. Then run *sudo service docker start*"
