@@ -1,8 +1,8 @@
 #!/bin/bash
 
 apt-get update
-apt-get install software-properties-common
+apt-get install -y software-properties-common
 add-apt-repository universe
 add-apt-repository ppa:certbot/certbot
 apt-get update
-apt-get install certbot python-certbot-nginx 
+apt-get install -y certbot python-certbot-nginx 
