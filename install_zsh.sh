@@ -2,7 +2,7 @@
 source $( dirname $0  )/utils.sh
 requireRoot
 
-# Determine which user zsh will be installed for 
+# Determine which user zsh will be installed for
 if [ $1 ]; then
 	ensureUserExists $1
 	USER=$1
